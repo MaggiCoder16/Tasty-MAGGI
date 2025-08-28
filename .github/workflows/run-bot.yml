@@ -62,4 +62,4 @@ jobs:
         if: always()
         run: gh workflow run "Run Bot"
         env:
-          GH_TOKEN: ${{ secrets.PAT_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
