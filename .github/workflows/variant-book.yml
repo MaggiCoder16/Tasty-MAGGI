@@ -26,4 +26,4 @@ jobs:
         with:
           name: book-artifacts
           path: |
-            antichess.bin
+            crazyhouse.bin
