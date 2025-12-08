@@ -6,14 +6,14 @@ import chess.pgn
 import chess.polyglot
 import chess.variant
 
-VARIANT = "antichess"
+VARIANT = "crazyhouse"
 MAX_PLY = 50
 MAX_BOOK_WEIGHT = 2520
-MIN_RATING = 2780
+MIN_RATING = 2100
 
 BOOK_OUTPUT = "antichess.bin"
 BOTS = {
-    "ToromBot", "strain-on-veins", "Ghost_HunteR2998", "PINEAPPLEMASK", "BalloonBot"
+    "ToromBot", "strain-on-veins", "Ghost_HunteR2998", "PINEAPPLEMASK", "RaspFish", "MaggiChess16"
 }
 
 
@@ -74,7 +74,7 @@ def key_hex(board: chess.Board) -> str:
     return f"{chess.polyglot.zobrist_hash(board):016x}"
 
 
-def stream_user_games(username: str, variant: str = VARIANT, max_per_request: int = 700):
+def stream_user_games(username: str, variant: str = VARIANT, max_per_request: int = 1000):
     url = f"https://lichess.org/api/games/user/{username}"
     headers = {"Accept": "application/x-chess-pgn"}
     session = requests.Session()
@@ -151,13 +151,13 @@ def build_book(bin_path: str):
                     if (game.headers.get("SetUp", "") or "") == "1" and game.headers.get("FEN"):
                         starting_fen = game.headers.get("FEN")
                     if starting_fen:
-                        board = chess.variant.AntichessBoard(fen=starting_fen)
+                        board = chess.variant.CrazyhouseBoard(fen=starting_fen)
                     else:
                         try:
                             b = game.board()
-                            board = chess.variant.AntichessBoard(fen=b.fen())
+                            board = chess.variant.CrazyhouseBoard(fen=b.fen())
                         except Exception:
-                            board = chess.variant.AntichessBoard()
+                            board = chess.variant.CrazyhouseBoard()
                     result = game.headers.get("Result", "")
                     if result == "1-0":
                         winner = chess.WHITE
