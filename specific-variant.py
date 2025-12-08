@@ -11,7 +11,7 @@ MAX_PLY = 50
 MAX_BOOK_WEIGHT = 2520
 MIN_RATING = 2100
 
-BOOK_OUTPUT = "antichess.bin"
+BOOK_OUTPUT = "crazyhouse.bin"
 BOTS = {
     "ToromBot", "strain-on-veins", "Ghost_HunteR2998", "PINEAPPLEMASK", "RaspFish", "MaggiChess16"
 }
