@@ -169,48 +169,27 @@ opening_books:
    #   names:
     #    - Chess960 
 
-    crazyhouse_black:
+    crazyhouse:
       selection: best_move
       allow_repetitions: true
       names:
-        - crazyblack
-    crazyhouse_white:
-      selection: best_move
-      names:
-        - crazywhite
-
-    kingofthehill_black:
+        - crazyhouse
+        
+    kingofthehill:
       selection: best_move
       allow_repetitions: true
       names:
-        - kothblack
+        - koth
 
-    kingofthehill_white:
+    antichess:
       selection: best_move
       names:
-        - kothwhite
-
-    antichess_white:
+        - antichess
+        
+    threecheck:
       selection: best_move
       names:
-        - antiwhite
-
-    antichess_black:
-      selection: best_move
-      allow_repetitions: true
-      names:
-        - antiblack
-
-    threecheck_white:
-      selection: best_move
-      names:
-        - threecheck
-
-    threecheck_black:
-      selection: best_move
-      allow_repetitions: true
-      names:
-        - threecheck      
+        - threecheck    
 
     atomic_white:
       selection: best_move
@@ -391,15 +370,12 @@ books:                                    # Names of the opening books (to be us
   Optimus2502: "./engines/OPTIMUS2502.bin"
   Optimus4: "./engines/OPTIMUS4.bin"
 #  Chess960: "./engines/chess960_OP.bin"
-  crazywhite: "./engines/crazy_white.bin"
-  crazyblack: "./engines/crazy_black.bin"
-  kothwhite: "./engines/koth_white.bin"
-  kothblack: "./engines/koth_black.bin"
+  crazyhouse: "./engines/crazyhouse.bin"
+  koth: "./engines/koth.bin"
   black: "./engines/std_black.bin"
   white: "./engines/std_white.bin"
-  antiwhite: "./engines/whiteanti.bin"
-  antiblack: "./engines/blackanti.bin"
-  threecheck: "./engines/threecheck_book.bin"
+  antichess: "./engines/antichess.bin"
+  threecheck: "./engines/threecheck.bin"
   atomic: "./engines/atomic.bin"
   hordeblack: "./engines/hordeb.bin"
   hordewhite: "./engines/hordew.bin"
