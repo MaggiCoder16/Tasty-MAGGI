@@ -6,14 +6,14 @@ import chess.pgn
 import chess.polyglot
 import chess.variant
 
-VARIANT = "crazyhouse"
+VARIANT = "threeCheck"
 MAX_PLY = 50
 MAX_BOOK_WEIGHT = 2520
-MIN_RATING = 2100
+MIN_RATING = 2300
 
-BOOK_OUTPUT = "crazyhouse.bin"
+BOOK_OUTPUT = "threecheck.bin"
 BOTS = {
-    "ToromBot", "strain-on-veins", "Ghost_HunteR2998", "PINEAPPLEMASK", "RaspFish", "MaggiChess16"
+    "ToromBot", "Ghost_HunteR2998", "PINEAPPLEMASK", "MaggiChess16", "tbhOnBot", "VEER-OMEGA-BOT"
 }
 
 
@@ -151,13 +151,13 @@ def build_book(bin_path: str):
                     if (game.headers.get("SetUp", "") or "") == "1" and game.headers.get("FEN"):
                         starting_fen = game.headers.get("FEN")
                     if starting_fen:
-                        board = chess.variant.CrazyhouseBoard(fen=starting_fen)
+                        board = chess.variant.ThreeCheckBoard(fen=starting_fen)
                     else:
                         try:
                             b = game.board()
-                            board = chess.variant.CrazyhouseBoard(fen=b.fen())
+                            board = chess.variant.ThreeCheckBoard(fen=b.fen())
                         except Exception:
-                            board = chess.variant.CrazyhouseBoard()
+                            board = chess.variant.ThreeCheckBoard()
                     result = game.headers.get("Result", "")
                     if result == "1-0":
                         winner = chess.WHITE
