@@ -74,7 +74,7 @@ def key_hex(board: chess.Board) -> str:
     return f"{chess.polyglot.zobrist_hash(board):016x}"
 
 
-def stream_user_games(username: str, variant: str = VARIANT, max_per_request: int = 300):
+def stream_user_games(username: str, variant: str = VARIANT, max_per_request: int = 700):
     url = f"https://lichess.org/api/games/user/{username}"
     headers = {"Accept": "application/x-chess-pgn"}
     session = requests.Session()
