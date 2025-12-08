@@ -26,4 +26,4 @@ jobs:
         with:
           name: book-artifacts
           path: |
-            chess960.bin
+            antichess.bin
