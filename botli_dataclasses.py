@@ -9,7 +9,7 @@ import chess.engine
 from chess.polyglot import MemoryMappedReader
 
 from enums import ChallengeColor, PerfType, Variant
-from utils import find_variant, parse_time_control
+from utils import PRIORITIES, find_variant, parse_time_control
 
 
 @dataclass(kw_only=True)
@@ -52,7 +52,15 @@ class Bot:
 @dataclass
 class Challenge:
     challenge_id: str
-    opponent_username: str
+    priority: int
+
+    @classmethod
+    def from_challenge_event(cls, challenge_event: dict[str, Any]) -> "Challenge":
+        challenge_id = challenge_event["id"]
+        title = challenge_event["challenger"].get("title")
+        priority = PRIORITIES.get(title, 0)
+
+        return Challenge(challenge_id, priority)
 
     def __eq__(self, value: object) -> bool:
         if isinstance(value, Challenge):
@@ -347,7 +355,7 @@ class MatchmakingType:
     max_rating_diff: int | None
 
     def __post_init__(self) -> None:
-        self.estimated_game_duration = timedelta(seconds=max(self.initial_time, 3) * 1.34 + self.increment * 91.76)
+        self.estimated_game_duration = timedelta(seconds=max(self.initial_time, 3) * 1.33 + self.increment * 104.29)
 
     def __str__(self) -> str:
         initial_time_min = self.initial_time / 60
